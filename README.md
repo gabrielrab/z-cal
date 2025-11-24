@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# z-cal.ai
 
-First, run the development server:
+Minimalist AI nutrition experience built with Next.js 16 and React 19.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+</div>
+
+## Overview
+
+z-cal.ai focuses on two flows:
+
+- **Nutri Scan** – upload or snap a meal photo to get calories, macros, and quick insights.
+- **Fridge Chef** – chat with an assistant that suggests healthy recipes based on whatever is in your fridge.
+
+It is powered by the App Router, React Query for data fetching, Tailwind CSS for styling, and subtle motion cues to keep everything feeling smooth.
+
+## Stack
+
+- Next.js 16 (App Router) + React 19
+- Tailwind CSS 4 + utility animations
+- React Query (@tanstack/react-query) for async state
+- Sonner for toast notifications
+
+## Requirements
+
+- Node.js **>= 18.18** (20+ recommended)
+- npm 10+, pnpm 9+, or yarn 1.x/4.x
+
+## Environment variables
+
+Create `.env.local` at the project root:
+
+```
+NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `NEXT_PUBLIC_API_URL` points the frontend to your backend (defaults to `http://localhost:8000`).
+- The backend must expose `/api/identify-food` and `/api/generate-recipe`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Install & run
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# install dependencies
+npm install
 
-## Learn More
+# development mode
+npm run dev
 
-To learn more about Next.js, take a look at the following resources:
+# production build
+npm run build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# serve built app
+npm run start
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# lint check
+npm run lint
+```
 
-## Deploy on Vercel
+After `npm run dev`, open `http://localhost:3000`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+app/
+  page.tsx        # landing page with quick entry points
+  scan/           # Nutri Scan experience
+  fridge/         # Fridge Chef chat
+lib/
+  api/            # backend calls + types
+  hooks/          # React Query hooks
+```
+
+## Development flow
+
+1. Set up `.env.local` with your API URL.
+2. Run `npm run dev`.
+3. Iterate on UI in `app/` and logic in `lib/`.
+4. For a production smoke test, run `npm run build && npm run start`.
