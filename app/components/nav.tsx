@@ -15,7 +15,7 @@ export function Nav() {
           href="/"
           active={pathname === "/"}
           icon={Home}
-          label="Início"
+          label="Home"
         />
         <NavLink
           href="/scan"
@@ -27,7 +27,7 @@ export function Nav() {
           href="/fridge"
           active={pathname === "/fridge"}
           icon={ChefHat}
-          label="Receitas"
+          label="Recipes"
         />
       </div>
     </nav>
